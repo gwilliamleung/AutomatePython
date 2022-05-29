@@ -2,15 +2,10 @@ import re, pyperclip
 
 websiteRegex = re.compile(r'''(
     https?://
-    (?:w{3}\.)?
-    [a-zA-Z0-9.-]+
-    \.
-    [a-zA-Z]
-    .
+    (www\.)?
     ([a-zA-Z0-9._%+-/])+
-    /
-    [a-zA-Z]+
-    )''',re.VERBOSE
+    .*
+   )''',re.VERBOSE
 )
 
 text = str(pyperclip.paste())
@@ -20,6 +15,7 @@ for groups in websiteRegex.findall(text):
     matches.append(groups[0])
 
 if len(matches)>0:
+    pyperclip.copy('\n'.join(matches))
     print('Copied to clipboard:')
     print('\n'.join(matches))
 else:
