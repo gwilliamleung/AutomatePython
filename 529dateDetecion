@@ -2,9 +2,35 @@ from datetime import date
 import re, pyperclip
 from sre_parse import Verbose
 
-dateRegex = re.compile(r'(\w{,2})[/](\w{,2})[/](\w{,4})')
+dateRegex = re.compile(r'(\d{,2})[/](\d{,2})[/](\d{,4})')
 
 text = str(pyperclip.paste())
 
 matches = dateRegex.findall(text)
+
+def dateValidator(matches):
+    for i in matches:
+        if int(groups[0]) > 12:
+            print('Not valid')
+            break
+        if int(groups[0]) == 4 or 6 or 8 or 11:
+            if int(groups[1]) < 30:
+                print(date+' is a valid date')
+            
+        if (int(groups[2]) % 4 == 0 and int(groups[2]) % 100 != 0) or (int(groups[2]) % 4 == 0 and int(groups[2]) % 100 == 0 and int(groups[2]) % 400 == 0):
+            print('Date is valid and it is a leap year')
+            break
+        else:
+            print(date+' is a valid date')
+
+
+for groups in dateRegex.findall(text):
+    date = '/'.join([groups[0],groups[1],groups[2]])
+
+if len(matches)>0:
+    print('Date found, it is '+date)
+    print('Validating now...')
+    dateValidator(matches)
+else:
+    print('No date found')
 
