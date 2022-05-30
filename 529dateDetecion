@@ -1,0 +1,10 @@
+from datetime import date
+import re, pyperclip
+from sre_parse import Verbose
+
+dateRegex = re.compile(r'(\w{,2})[/](\w{,2})[/](\w{,4})')
+
+text = str(pyperclip.paste())
+
+matches = dateRegex.findall(text)
+
