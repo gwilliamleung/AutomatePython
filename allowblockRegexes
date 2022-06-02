@@ -1,0 +1,5 @@
+from nis import cat
+import pyinputplus as pyip
+response = pyip.inputStr(allowRegexes=[r'caterpillar','category'], 
+blockRegexes=[r'cat'])
+cat
