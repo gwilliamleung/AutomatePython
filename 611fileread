@@ -1,0 +1,2 @@
+sonnetFile = open(Path.home()/'sonnet29.txt')
+sonetFile.readlines()
