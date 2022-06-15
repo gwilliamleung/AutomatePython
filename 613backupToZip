@@ -32,5 +32,4 @@ def backupToZip(folder):
     backupZip.close()
     print('Done.')
 
-
 backupToZip('C:\\delicious')
