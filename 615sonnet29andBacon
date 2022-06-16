@@ -1,0 +1,4 @@
+from pathlib import Path
+
+helloFile = open('C:\\Users\\Gundam\\hello.txt')
+helloFile.readlines()
